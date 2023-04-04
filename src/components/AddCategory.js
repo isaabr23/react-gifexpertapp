@@ -7,6 +7,8 @@ export const AddCategory = ({ setCategories }) => { //pasamos la destructurizaci
     
     const handleInputChange = ( e ) => {
         setInputValue( e.target.value ) // ahora usamos el setInputValue que sera el estado nuevo e = evento ** asignamos al target el valor (value)
+
+        console.log('handleInputChange llamado');
     }
 
     //prevenimos actualizacion por default al apretar enter y no se recarga la pagina completa
@@ -15,13 +17,14 @@ export const AddCategory = ({ setCategories }) => { //pasamos la destructurizaci
 
         if ( inputValue.trim().length > 2) { //eliminamos espacios(trim) y si es menor el largo a 2 letras lo insertamos
             
-            setCategories( cats => [ inputValue, ...cats ] ); // (callback) ingresamos en inputValue = a lo que se agregara al dar click, y conforme ingresamos se colocara al principio (...cats = eñ primero inputValue = el ultimo agregado) 
+            setCategories( cats => [ inputValue, ...cats ] ); // (callback) ingresamos en inputValue = a lo que se agregara al dar click, y conforme ingresamos se colocara al principio (...cats = el primero inputValue = el ultimo agregado) 
             setInputValue(''); //vaciamos el valor despues del enter para que quede vacio
         }
     }
 
     return (
         <form onSubmit={ handleSubmit }> 
+        <p> { inputValue } </p>
            <input 
                 type="text"
                 value={ inputValue } // Le asignamos un valor (texto) a la casilla
